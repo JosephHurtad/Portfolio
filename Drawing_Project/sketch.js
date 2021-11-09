@@ -11,8 +11,17 @@ function preload(){
 function setup() {
 	canvas = createCanvas(800, 800);
 	canvas.position(50,140);
-	sliderText = createElement('h1' ,'Slide for different colors');
-	sliderText.position(50, 960);
+	colorText = createElement('h1' ,'Slide for different colors:');
+	colorText.style('color','white')
+	colorText.position(50, 960);
+
+	resolutionText = createElement('h1' ,'Resolutions:');
+	resolutionText.style('color','white')
+	resolutionText.position(740, 960);
+
+	warningText = createElement('h3' ,'(Slow)');
+	warningText.style('color','gray')
+	warningText.position(800, 1085);
 
 	sliderR = createSlider(0,255,0);
 	sliderG = createSlider(0,255,0);
@@ -42,32 +51,53 @@ function setup() {
 	button2.mousePressed(button2IsPressed);
 	button3.mousePressed(button3IsPressed);
 
-	button1.position(600, 985);
-	button2.position(700, 985);
-	button3.position(800, 985);
+	button1.position(740, 1015);
+	button2.position(740, 1058);
+	button3.position(740, 1098);
 
-	colorButton1 = createElement('button','Red');
-	colorButton2 = createElement('button','Green');
-	colorButton3 = createElement('button','Blue');
-	colorButton4 = createElement('button','White');
-	colorButton5 = createElement('button','Black');
+	colorButtonRed = createElement('button','Red');
+	colorButtonGreen = createElement('button','Green');
+	colorButtonBlue = createElement('button','Blue');
+	colorButtonWhite = createElement('button','White');
+	colorButtonBlack = createElement('button','Black');
+	colorButtonYellow = createElement('button','Yellow');
+	colorButtonCyan = createElement('button','Cyan');
+	colorButtonPurple = createElement('button','Purple');
 
-	colorButton1.mousePressed(color1IsPressed);
-	colorButton2.mousePressed(color2IsPressed);
-	colorButton3.mousePressed(color3IsPressed);
-	colorButton4.mousePressed(color4IsPressed);
-	colorButton5.mousePressed(color5IsPressed);
+	colorButtonRed.mousePressed(colorRedIsPressed);
+	colorButtonGreen.mousePressed(colorGreenIsPressed);
+	colorButtonBlue.mousePressed(colorBlueIsPressed);
+	colorButtonWhite.mousePressed(colorWhiteIsPressed);
+	colorButtonBlack.mousePressed(colorBlackIsPressed);
+	colorButtonYellow.mousePressed(colorYellowIsPressed);
+	colorButtonCyan.mousePressed(colorCyanIsPressed);
+	colorButtonPurple.mousePressed(colorPurpleIsPressed);
 
-	colorButton1.position(404, 1050);
-	colorButton2.position(448, 1050);
-	colorButton3.position(505, 1050);
-	colorButton4.position(423, 1075);
-	colorButton5.position(478, 1075);
+	colorButtonRed.position(340, 1015);
+	colorButtonGreen.position(340, 1058);
+	colorButtonBlue.position(340, 1098);
+	colorButtonWhite.position(440, 1035);
+	colorButtonBlack.position(440, 1078);
+	colorButtonYellow.position(540, 1015);
+	colorButtonCyan.position(540, 1058);
+	colorButtonPurple.position(540, 1098);
 
-	for(let i=0; i < 14; i++){
-		for(let e = 0; e < 14; e++)
-			pixelArray[i] = new Pixel(50*(i+1), 50*(e+1), 50);
-	}
+	colorButtonRed.style('color','red');
+	colorButtonGreen.style('color','green');
+	colorButtonBlue.style('color','blue');
+	colorButtonWhite.style('color','black');
+	colorButtonBlack.style('color','black');
+	colorButtonYellow.style('color','yellow');
+	colorButtonCyan.style('color','cyan');
+	colorButtonPurple.style('color','purple');
+
+	// for(let i=0; i < 14; i++){
+	// 	for(let e = 0; e < 14; e++) {
+	// 		pixelArray.push(new Pixel(50*(i+1), 50*(e+1), 50));
+	// 	}
+	// }
+
+	create14x14();
 
 	print(pixelArray.length);
 
@@ -80,7 +110,9 @@ function draw(){
 	
 
 	for(let i = 0; i < pixelArray.length; i++){
-		pixelArray[i].display();
+		for(let e = 0; e < 14; e++) {
+			pixelArray[i].display();
+		}
 	}
 
 }
@@ -93,7 +125,7 @@ function button1IsPressed(){
 
 	for(let i=0; i < 14; i++){
 			for(let e = 0; e < 14; e++)
-				pixelArray[i,e] = new Pixel(50*(i+1), 50*(e+1), 50);
+				pixelArray.push(new Pixel(50*(i+1), 50*(e+1), 50));
 		}
 }
 
@@ -105,7 +137,7 @@ function button2IsPressed(){
 
 	for(let i=0; i < 30; i++){
 			for(let e = 0; e < 30; e++)
-				pixelArray[i,e] = new Pixel(25*(i+1), 25*(e+1), 25);
+				pixelArray.push(new Pixel(25*(i+1), 25*(e+1), 25));
 		}
 }
 
@@ -117,36 +149,65 @@ function button3IsPressed(){
 
 	for(let i=0; i < 78; i++){
 			for(let e = 0; e < 78; e++)
-				pixelArray[i,e] = new Pixel(10*(i+1), 10*(e+1), 10);
+				pixelArray.push(new Pixel(10*(i+1), 10*(e+1), 10));
 		}
 }
 
-function color1IsPressed(){
+function create14x14(){
+
+	pixelArray=[];
+
+	for(let i=0; i < 14; i++){
+		for(let e = 0; e < 14; e++) {
+			pixelArray.push(new Pixel(50*(i+1), 50*(e+1), 50));
+		}
+	}
+}
+
+function colorRedIsPressed(){
 	sliderR.value(255);
 	sliderG.value(0);
 	sliderB.value(0);
 }
 
-function color2IsPressed(){
+function colorGreenIsPressed(){
 	sliderR.value(0);
 	sliderG.value(255);
 	sliderB.value(0);
 }
 
-function color3IsPressed(){
+function colorBlueIsPressed(){
 	sliderR.value(0);
 	sliderG.value(0);
 	sliderB.value(255);
 }
 
-function color4IsPressed(){
+function colorWhiteIsPressed(){
 	sliderR.value(255);
 	sliderG.value(255);
 	sliderB.value(255);
 }
 
-function color5IsPressed(){
+function colorBlackIsPressed(){
 	sliderR.value(0);
 	sliderG.value(0);
 	sliderB.value(0);
+}
+
+function colorYellowIsPressed(){
+	sliderR.value(255);
+	sliderG.value(255);
+	sliderB.value(0);
+}
+
+function colorCyanIsPressed(){
+	sliderR.value(0);
+	sliderG.value(255);
+	sliderB.value(255);
+}
+
+function colorPurpleIsPressed(){
+	sliderR.value(255);
+	sliderG.value(0);
+	sliderB.value(255);
 }
