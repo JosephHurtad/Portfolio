@@ -478,7 +478,7 @@ function drawBullets3() {
 // }
 
 function keyPressed(){//pausebutton
-	if(keyCode === 32 && timesPressed == 0){//
+	if(keyCode === 32 && timesPressed == 0 && scene != 'start'){//
 		bulletSpeed = bulletStop;
 		heartSpeed = 0;
 		paused = true;
