@@ -114,7 +114,7 @@ function setup() {
 //check and draw the corresponding scene
 function draw(){
 
-	print(scene);
+	//print(scene);
 
 	if (scene == 'start'){
 		startScene();
@@ -136,6 +136,14 @@ function level1(){
 
 	background(0);
 
+	container = {
+		x:width/2,
+		y:height*0.7,
+		width:500,
+		height:300,
+		weight:5
+	}
+
 	textAlign(CENTER, CENTER);
 	rectMode(CENTER, CENTER);
 
@@ -146,14 +154,6 @@ function level1(){
 	drawBullets1();
 
 	ifPaused();
-
-	container = {
-		x:width/2,
-		y:height*0.7,
-		width:500,
-		height:300,
-		weight:5
-	}
 }
 function level2(){
 	background(0);
@@ -208,6 +208,7 @@ function overScene(){
 
 		textSize(20);
 		fill(255);
+		noStroke();
 		text('GAME OVER', width/2, height/2 - 10);
 		drawRetry();
 
@@ -223,6 +224,7 @@ function winScene(){
 
 		textSize(20);
 		fill(255);
+		noStroke();
 		text('YOU WIN', width/2, height/2 - 10);
 		drawRetry();
 }
@@ -483,13 +485,13 @@ function keyPressed(){//pausebutton
 		heartSpeed = 0;
 		paused = true;
 		timesPressed = 1;
-		print(bulletSpeed);
+		//print(bulletSpeed);
 	} else if (keyCode === 32 && timesPressed == 1) {
 		bulletSpeed = bulletStart
 		heartSpeed = 3;
 		paused = false;
 		timesPressed = 0;
-		print(scene);
+		//print(scene);
 	}
 }
 
