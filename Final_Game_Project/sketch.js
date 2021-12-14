@@ -236,9 +236,16 @@ function startScene(){
 		textAlign(CENTER, CENTER);
 		rectMode(CENTER, CENTER);
 
-		textSize(20);
 		fill(255);
+		noStroke();
+		textSize(30);
+		text('GAME BY JOSEPH H.', width/2, height/2 - 200);
+		textSize(20);
+		text('Inspired by Undertale', width/2 + 100, height/2 - 160);
 		text('READY?', width/2, height/2 - 10);
+		text('CONTROLS:', width/4, height/4 * 3);
+		text('W + A + S + D', width/4, height/4 * 3 + 50);
+		text('SPACE BAR TO PAUSE', width/4, height/4 * 3 + 100);
 		drawStart();
 }
 
