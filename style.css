@@ -76,8 +76,6 @@ audio {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-gap: 1em;
-	font-size: 20px;
-	color: #CBB695;
 }
 
 .project {
@@ -92,10 +90,14 @@ audio {
 	background-color: #282828;
 }
 
+.project a {
+	font-size: 1.75em;
+}
+
 /* about */
 
 #portrait {
-	width: 150px;
+	width: 300px;
 	float: right;
 }
 
@@ -106,4 +108,10 @@ audio {
 #heading {
 	background-color: transparent;
 	padding: 0.2em;
+}
+#about p {
+	font-size: 2em;
+}
+#resume {
+	width: 112px;
 }
